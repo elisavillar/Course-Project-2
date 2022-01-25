@@ -41,3 +41,12 @@ ggplot(all_NEI, aes(x = year, y = Emissions)) +
     x = "Years",
     y = expression("Total US "~   PM[2.5] ~ "Emissions")) +
   theme(plot.title = element_text(hjust = 0.5)) 
+
+## Plot to png
+
+dev.copy(png, file =  "plot1.png", 
+         width = 480, 
+         height = 480, 
+         units = "px")   
+
+dev.off()   
