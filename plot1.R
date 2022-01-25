@@ -12,9 +12,6 @@
 install.packages("scales")
 library("scales")
 
-install.packages("ggplot2") 
-library(ggplot2)
-
 ## Download, read and load file
 
 url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
@@ -31,16 +28,20 @@ SCC <- readRDS("Source_Classification_Code.rds")
 
 all_NEI <- aggregate(Emissions ~ year, NEI, sum)
 
+
 # Plot all_NEI
 
-ggplot(all_NEI, aes(x = year, y = Emissions)) + 
-  geom_line(color = 11) +
-  scale_y_continuous(labels = scales::comma) +
-  labs(
-    title = expression("Total US "~ PM[2.5]~ "Emissions by Year"),
-    x = "Years",
-    y = expression("Total US "~   PM[2.5] ~ "Emissions")) +
-  theme(plot.title = element_text(hjust = 0.5)) 
+options(scipen = 5)
+
+plot(all_NEI$year, all_NEI$Emissions,
+     pch = 18,
+     col = "#009999",  
+     type = "b",
+     lwd = 2,
+     main = expression("Total US "~ PM[2.5]~ "Emissions by Year"), 
+     ylab = expression("Total US "~   PM[2.5] ~ "Emissions"), 
+     xlab = "Years")
+
 
 ## Plot to png
 
