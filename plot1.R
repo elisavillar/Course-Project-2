@@ -7,11 +7,6 @@
 
 #---------------------------------
 
-# Install and load packages
-
-install.packages("scales")
-library("scales")
-
 ## Download, read and load file
 
 url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
