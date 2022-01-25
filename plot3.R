@@ -36,16 +36,13 @@ type_balti <- aggregate(Emissions ~ year + type, balti, sum)
 
 # Plot type_balti
 
-options(scipen = 5)
-
-plot(all_balti$year, all_balti$Emissions,
-     pch = 18,
-     col = "#006666",  
-     type = "b",
-     lwd = 2,
-     main = expression("Total Baltimore "~ PM[2.5]~ "Emissions by Year"), 
-     ylab = expression("Total Baltimore "~   PM[2.5] ~ "Emissions"), 
-     xlab = "Years")
+ggplot(type_balti, aes(year, Emissions, col = type)) +
+        geom_line() +
+        geom_point() +
+        ggtitle(expression("Total Baltimore " ~ PM[2.5] ~ "Emissions by Type and Year")) +
+        ylab(expression("Total Baltimore " ~ PM[2.5] ~ "Emissions")) +
+        xlab("Years") 
+        
 
 ## Plot to png
 
